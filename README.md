@@ -27,6 +27,11 @@ TemperatureColorGenerator(-3, 0.7) //returns rgba representation as a string.
 rgba2hex(TemperatureColorGenerator(-3, 0.7)) //return hex representation as a string.
 ```
 
+## Examples
+![image](https://user-images.githubusercontent.com/60695851/150843912-84a696a6-a8e0-49db-b563-c71b7a93aadd.png)
+![image](https://user-images.githubusercontent.com/60695851/150844051-da838947-10f7-4d8b-bbd2-f273cfcbd735.png)
+
+
 ## Authors
 
 Abdulsalam Odetayo  [@linkedIn](https://www.linkedin.com/in/abdulsalam-odetayo-87ba72202/)
@@ -36,3 +41,4 @@ Abdulsalam Odetayo  [@linkedIn](https://www.linkedin.com/in/abdulsalam-odetayo-8
 * [How to convert RGBA to Hex color code using javascript](https://stackoverflow.com/a/49974627/14004547)
 * [Mixing two colors "naturally" in javascript](https://stackoverflow.com/a/32171077/14004547)
 * [Color and Temperature mapping](https://pin.it/5bV3fjK)
+* [Function Implementation Example](https://weathernowjs.web.app/)
