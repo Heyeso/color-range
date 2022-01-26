@@ -1,5 +1,2 @@
 #deployment
-/.firebase
-.firebaserc
-firebase.json
-deploy.txt
+Demo/*
