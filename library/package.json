@@ -2,7 +2,7 @@
   "name": "temperature-color",
   "version": "2.0.0",
   "description": "A Library of functions for generating colors associated with temperature within a range. TemperatureColor is a temperature-to-color converter.",
-  "main": "temperaturecolor.lib.js",
+  "main": "temperature-color.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
