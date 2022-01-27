@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/Heyeso/TemperatureColor/issues"
   },
-  "homepage": "https://github.com/Heyeso/TemperatureColor#readme"
+  "homepage": "https://github.com/Heyeso/TemperatureColor#readme",
+  "keywords": [
+    "temperature",
+    "color",
+    "library",
+    "javascript",
+    "function",
+    "converter"
+  ],
+  "type": "module"
 }
