@@ -1,10 +1,12 @@
-# Temperature Color
+# Temperature Color  
+
+![version](https://img.shields.io/npm/v/temperature-color) ![size](https://img.shields.io/bundlephobia/minzip/temperature-color) ![downloads](https://img.shields.io/npm/dw/temperature-color) ![license](https://img.shields.io/npm/l/temperature-color)
 
 A function for generating colors associated with temperature within a range. [View Demo](https://temperaturecolor.web.app/)
 
 ## Description
 
-Temperature Color is a function that generates a color associated with a temperature withing a range. [Function](https://github.com/Heyeso/TemperatureColor/blob/f3b43a83a948daa5a758872e0eda4b76afcd7a07/app.js#L41) takes in a temperature number and color opacity number, and returns a color in rgba format. [rgba2hex](https://github.com/Heyeso/TemperatureColor/blob/f3b43a83a948daa5a758872e0eda4b76afcd7a07/app.js#L62) can be used to convert rgba to hex. The range is a mapping of checkpoint temperature numbers with a color, and is defined along with the function. Reference [TEMP_COLORS](https://github.com/Heyeso/TemperatureColor/blob/f3b43a83a948daa5a758872e0eda4b76afcd7a07/app.js#L1) and [TEMP](https://github.com/Heyeso/TemperatureColor/blob/f3b43a83a948daa5a758872e0eda4b76afcd7a07/app.js#L15) for the mapping used in this project.
+Temperature Color is a function that generates a color associated with a temperature withing a range. The range is a mapping of checkpoint temperature numbers with a color, and is defined along with the function.
 
 ## Getting Started
 
@@ -12,22 +14,54 @@ Temperature Color is a function that generates a color associated with a tempera
 
 ### Installing
 
-* Copy `TEMP` (object), `TEMP_COLORS` (object), `colorMixer` (function) and `TemperatureColorGenerator` (function)
-* Copy `rgba2hex` (function) to convert to hex
+* `npm i temperature-color`
+* In your projects's `package.json` file, add
+    ```
+    {
+        ...,
+        "type": "module"
+    }
+    ```
 
-### Executing program
+### Usage  
 
-* Call `TemperatureColorGenerator(temperature, opacity?)` function.
-* Call `rgba2hex(string)` and pass `TemperatureColorGenerator` return value as parameter to conver to hex.
+```js
+import TempColorMapping, { RGB } from 'temperature-color';
+
+const Mapping = TempColorMapping(); // default mapping
+const Example1 = Mapping.TemperatureToColor(30);
+console.log(Example1); // returns RBG { r: 255, g: 14, b: 0 }
+console.log(Example1.toString()); // returns "rgb(255, 14, 0)"
+console.log(Example1.toHexString()); // returns "#ff0e00"
+
+const colors = [
+  [255, 0, 255],
+  [128, 0, 128],
+  [135, 206, 235],
+  [255, 255, 0],
+  [255, 36, 0],
+  [139, 0, 0],
+]; // [r, g, b]
+const temperatures = [-7, -1, 4, 10, 16, 21]; // °C
+
+const Mapping1 = TempColorMapping(colors, temperatures); // custom mapping
+const Example2 = Mapping.TemperatureToColor(30);
+console.log(Example2); // returns RGB { r: 133, g: 164, b: 213 }
+console.log(Example2.toString()); // returns "rgb(133, 164, 213)"
+console.log(Example2.toHexString()); // returns "#85a4d5"
+
+const Example3 = new RGB(3, 40, 69); // color in rgb format
+console.log(Example3.totring()); // returns "rgb(3, 40, 69)"
+console.log(Example3.toHexString()); // returns "#032845"
 ```
-//Example1
-TemperatureColorGenerator(-3, 0.7) //returns rgba representation as a string.
 
-//Example2.
-rgba2hex(TemperatureColorGenerator(-3, 0.7)) //return hex representation as a string.
-```
+Default Mapping (°C) -
+![3b84d4f6ff48199229411d8ef5ce148c](https://user-images.githubusercontent.com/60695851/151463299-7c4973aa-1f57-48a9-9fe2-6451635dc60e.jpg)
 
-## Examples
+## Sample Use
+
+Sample use in projects.
+
 ![image](https://user-images.githubusercontent.com/60695851/150843912-84a696a6-a8e0-49db-b563-c71b7a93aadd.png)
 ![image](https://user-images.githubusercontent.com/60695851/150844051-da838947-10f7-4d8b-bbd2-f273cfcbd735.png)
 
