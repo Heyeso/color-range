@@ -83,6 +83,11 @@ Don't forget to give the project a star! Thanks again!
 
 Abdulsalam Odetayo  [@linkedIn](https://www.linkedin.com/in/abdulsalam-odetayo-87ba72202/)
 
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+
 ## References
 
 * [How to convert RGBA to Hex color code using javascript](https://stackoverflow.com/a/49974627/14004547)
