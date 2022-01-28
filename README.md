@@ -45,7 +45,7 @@ const colors = [
 const temperatures = [-7, -1, 4, 10, 16, 21]; // °C
 
 const Mapping1 = TempColorMapping(colors, temperatures); // custom mapping
-const Example2 = Mapping.TemperatureToColor(30);
+const Example2 = Mapping1.TemperatureToColor(3);
 console.log(Example2); // returns RGB { r: 133, g: 164, b: 213 }
 console.log(Example2.toString()); // returns "rgb(133, 164, 213)"
 console.log(Example2.toHexString()); // returns "#85a4d5"
