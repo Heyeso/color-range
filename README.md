@@ -55,7 +55,8 @@ console.log(Example3.totring()); // returns "rgb(3, 40, 69)"
 console.log(Example3.toHexString()); // returns "#032845"
 ```
 
-Default Mapping (°C) -
+Default Mapping (°C) -  
+
 ![3b84d4f6ff48199229411d8ef5ce148c](https://user-images.githubusercontent.com/60695851/151463299-7c4973aa-1f57-48a9-9fe2-6451635dc60e.jpg)
 
 ## Sample Use
