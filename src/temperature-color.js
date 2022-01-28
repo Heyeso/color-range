@@ -20,7 +20,7 @@ const default_colors = [
 /**
  * Default temperature for mapping.
  */
-const default_temperature = [-23, -18, -12, -7, -1, 4, 10, 16, 21, 27, 32, 38];
+const default_temperatures = [-23, -18, -12, -7, -1, 4, 10, 16, 21, 27, 32, 38];
 
 class Mapping {
   /**
@@ -28,7 +28,7 @@ class Mapping {
    * @param {number[][]} color
    * @param {number[]} temperature
    */
-  constructor(color = default_colors, temperature = default_temperature) {
+  constructor(color = default_colors, temperature = default_temperatures) {
     this.color = color;
     this.temperature = temperature;
   }
@@ -74,9 +74,9 @@ export class RGB {
  * @param {number[]} temperatureArr array of numbers for represented temperature in any Unit.
  * @returns object of mapped colors and temperatures.
  */
-export default function TemperatureColor(
+export default function TempColorMapping(
   colorArr = default_colors,
-  temperatureArr = default_temperature
+  temperatureArr = default_temperatures
 ) {
   let self = {};
   self.Mapping = new Mapping(colorArr, temperatureArr);
