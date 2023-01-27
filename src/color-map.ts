@@ -1,25 +1,5 @@
-"use strict";
-
-import { RGB, Color, ColorMap } from "./types";
-import { channelToHex, createMap, blendColorByRatio } from "./utils";
-
-/**
- * It takes an object with three properties, r, g, and b, and returns an object with two methods,
- * toString and toHex
- * @param {RGB}  - RGB - the type of the parameter
- * @returns A function that returns an object with a toString method and a toHex method.
- */
-export const createColor = (rgb: RGB | number[]): Color => ({
-  rgb: Array.isArray(rgb) ? { r: rgb[0], g: rgb[1], b: rgb[0] } : rgb,
-  toString() {
-    return `rgb(${this.rgb.r}, ${this.rgb.g}, ${this.rgb.b})`;
-  },
-  toHex() {
-    return `#${channelToHex(this.rgb.r)}${channelToHex(
-      this.rgb.g
-    )}${channelToHex(this.rgb.b)}`;
-  },
-});
+import { Color, ColorMap } from "./types";
+import { createMap, blendColorByRatio } from "./utils";
 
 /**
  * It takes an array of colors and an array of ranges, and returns an object with the mapping of

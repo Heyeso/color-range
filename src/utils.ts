@@ -1,5 +1,4 @@
-import { createColor } from "./color-map";
-import { Color, MapObject } from "./types";
+import { Color, MapObject, RGB } from "./types";
 
 /**
  * "Given two color channels and a ratio, return a new color channel that is a mix of the two."
@@ -14,6 +13,24 @@ const blendChannelByRatio = (
   channel2: number,
   ratio: number
 ): number => channel1 * ratio + channel2 * (1 - ratio);
+
+/**
+ * It takes an object with three properties, r, g, and b, and returns an object with two methods,
+ * toString and toHex
+ * @param {RGB}  - RGB - the type of the parameter
+ * @returns A function that returns an object with a toString method and a toHex method.
+ */
+export const createColor = (rgb: RGB | number[]): Color => ({
+  rgb: Array.isArray(rgb) ? { r: rgb[0], g: rgb[1], b: rgb[0] } : rgb,
+  toString() {
+    return `rgb(${this.rgb.r}, ${this.rgb.g}, ${this.rgb.b})`;
+  },
+  toHex() {
+    return `#${channelToHex(this.rgb.r)}${channelToHex(
+      this.rgb.g
+    )}${channelToHex(this.rgb.b)}`;
+  },
+});
 
 /**
  * It takes two colors and a percentage, and returns a new color that is a mix of the two colors
