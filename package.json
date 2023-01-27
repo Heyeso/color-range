@@ -2,10 +2,14 @@
   "name": "@heyeso/color-map",
   "version": "1.0.0",
   "description": "A library of functions for generating colors within a specified range that has been mapped to colors.",
-  "main": "src/color-map.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "start:dev": "npx nodemon",
-    "test": "jest --watch"
+    "test": "jest --watchAll",
+    "rollup": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -26,11 +30,20 @@
     "converter"
   ],
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.3.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "rollup": "^3.10.1",
+    "rollup-plugin-dts": "^5.1.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "styled-components": "^5.3.6",
     "typescript": "^4.9.4"
   },
   "dependencies": {
     "@types/jest": "^29.4.0",
     "nodemon": "^2.0.20",
-    "ts-jest": "^29.0.5"
+    "ts-jest": "^29.0.5",
+    "tslib": "^2.5.0"
   }
 }
