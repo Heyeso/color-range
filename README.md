@@ -1,12 +1,10 @@
-# Temperature Color  
+# Color Map  
 
-![version](https://img.shields.io/npm/v/temperature-color) ![size](https://img.shields.io/bundlephobia/minzip/temperature-color) ![downloads](https://img.shields.io/npm/dw/temperature-color) ![license](https://img.shields.io/npm/l/temperature-color)
-
-A function for generating colors associated with temperature within a range. [View Demo](https://temperaturecolor.web.app/)
+![version](https://img.shields.io/npm/v/@heyeso/color-map) ![size](https://img.shields.io/bundlephobia/minzip/@heyeso/color-map) ![downloads](https://img.shields.io/npm/dw/@heyeso/color-map) ![license](https://img.shields.io/npm/l/@heyeso/color-map)
 
 ## Description
 
-Temperature Color is a function that generates a color associated with a temperature withing a range. The range is a mapping of checkpoint temperature numbers with a color, and is defined along with the function.
+Color-map is a powerful JavaScript library that allows developers to easily generate a wide range of colors within a specified interval of numbers. The library utilizes a unique mapping system that assigns specific colors to specific values, allowing for precise and consistent color generation. With color-map, developers can easily create color palettes for use in web and mobile applications, as well as in data visualization and graphic design projects. Whether you're a designer looking to create a cohesive color scheme or a developer building an interactive data visualization, color-map is the perfect tool for the job.
 
 ## Getting Started
 
@@ -14,7 +12,7 @@ Temperature Color is a function that generates a color associated with a tempera
 
 ### Installing
 
-* `npm i temperature-color`
+* `npm i @heyeso/color-map --save-dev`
 * In your projects's `package.json` file, add
     ```
     {
@@ -25,39 +23,50 @@ Temperature Color is a function that generates a color associated with a tempera
 
 ### Usage  
 
+#### `colorMap()`
+
 ```js
-import TempColorMapping, { RGB } from 'temperature-color';
+import colorMap from "@heyeso/color-map";
 
-const Mapping = TempColorMapping(); // default mapping
-const Example1 = Mapping.TemperatureToColor(30);
-console.log(Example1); // returns RBG { r: 255, g: 14, b: 0 }
-console.log(Example1.toString()); // returns "rgb(255, 14, 0)"
-console.log(Example1.toHexString()); // returns "#ff0e00"
+/**
+ * Default colors for mapping.
+ */
+export const test_colors = [
+    [255, 0, 255],
+    [217, 130, 181],
+    [128, 0, 128],
+    [0, 0, 255],
+    [135, 206, 235],
+    [0, 255, 0],
+    [27, 142, 45],
+    [255, 255, 0],
+    [255, 215, 0],
+    [255, 36, 0],
+    [255, 0, 0],
+    [139, 0, 0],
+  ];
+/**
+ * Default ranges for mapping.
+ */
+export const test_ranges = [-1, 4, 10, 16, 21, 27, 32, 38, -23, -18, -12, -7];
 
-const colors = [
-  [255, 0, 255],
-  [128, 0, 128],
-  [135, 206, 235],
-  [255, 255, 0],
-  [255, 36, 0],
-  [139, 0, 0],
-]; // [r, g, b]
-const temperatures = [-7, -1, 4, 10, 16, 21]; // °C
+const temperatureMap = colorMap(test_colors, test_ranges);
+const temp1 = temperatureMap.getColor(30);
 
-const Mapping1 = TempColorMapping(colors, temperatures); // custom mapping
-const Example2 = Mapping1.TemperatureToColor(3);
-console.log(Example2); // returns RGB { r: 133, g: 164, b: 213 }
-console.log(Example2.toString()); // returns "rgb(133, 164, 213)"
-console.log(Example2.toHexString()); // returns "#85a4d5"
-
-const Example3 = new RGB(3, 40, 69); // color in rgb format
-console.log(Example3.totring()); // returns "rgb(3, 40, 69)"
-console.log(Example3.toHexString()); // returns "#032845"
+temp1?.rgb; // { r: 255, g: 22, b: 0 }
+temp1?.toString(); // "rgb(255, 22, 0)"
+temp1?.toHex(); // "#ff1600"
 ```
 
-Default Mapping (°C) -  
+#### `createColor()`
 
-![3b84d4f6ff48199229411d8ef5ce148c](https://user-images.githubusercontent.com/60695851/151463299-7c4973aa-1f57-48a9-9fe2-6451635dc60e.jpg)
+```js
+import { createColor } from "@heyeso/color-map";
+
+const color = createColor([3, 40, 69]);
+color.toString(); // "rgb(3, 40, 69)"
+color.toHex(); // "#032845"
+```
 
 ## Sample Use
 
@@ -93,4 +102,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 * [How to convert RGBA to Hex color code using javascript](https://stackoverflow.com/a/49974627/14004547)
 * [Mixing two colors "naturally" in javascript](https://stackoverflow.com/a/32171077/14004547)
 * [Color and Temperature mapping](https://pin.it/5bV3fjK)
-* [Function Implementation Example](https://weathernowjs.web.app/)
