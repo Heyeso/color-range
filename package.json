@@ -1,22 +1,22 @@
 {
-  "name": "temperature-color",
+  "name": "@heyeso/color-map",
   "version": "1.0.0",
-  "description": "A Library of functions for generating colors associated with temperature within a range. TemperatureColor is a temperature-to-color converter.",
-  "main": "src/temperature-color.js",
+  "description": "A library of functions for generating colors within a specified range that has been mapped to colors.",
+  "main": "src/color-map.ts",
   "scripts": {
     "start:dev": "npx nodemon",
     "test": "jest --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Heyeso/TemperatureColor.git"
+    "url": "git+https://github.com/Heyeso/color-map.git"
   },
   "author": "Abdulsalam 0. Odetayo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Heyeso/TemperatureColor/issues"
+    "url": "https://github.com/Heyeso/color-map/issues"
   },
-  "homepage": "https://github.com/Heyeso/TemperatureColor#readme",
+  "homepage": "https://github.com/Heyeso/color-map#readme",
   "keywords": [
     "temperature",
     "color",
