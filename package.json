@@ -4,7 +4,8 @@
   "description": "A Library of functions for generating colors associated with temperature within a range. TemperatureColor is a temperature-to-color converter.",
   "main": "src/temperature-color.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "npx nodemon",
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -24,5 +25,12 @@
     "function",
     "converter"
   ],
-  "type": "module"
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@types/jest": "^29.4.0",
+    "nodemon": "^2.0.20",
+    "ts-jest": "^29.0.5"
+  }
 }
