@@ -4,7 +4,7 @@
 
 ## Description
 
-Color-map is a powerful JavaScript library that allows developers to easily generate a wide range of colors within a specified interval of numbers. The library utilizes a unique mapping system that assigns specific colors to specific values, allowing for precise and consistent color generation. With color-map, developers can easily create color palettes for use in web and mobile applications, as well as in data visualization and graphic design projects. Whether you're a designer looking to create a cohesive color scheme or a developer building an interactive data visualization, color-map is the perfect tool for the job.
+color-map is a TypeScript library that allows developers to easily generate a wide range of colors within a specified interval of numbers. The library utilizes a unique mapping system that assigns specific colors to specific values, allowing for precise and consistent color generation. With color-map, developers can easily create color palettes for use in web and mobile applications, as well as in data visualization and graphic design projects. Whether you're a designer looking to create a cohesive color scheme or a developer building an interactive data visualization, color-map is the perfect tool for the job.
 
 ## Getting Started
 
