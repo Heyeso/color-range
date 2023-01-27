@@ -12,7 +12,7 @@ const blendChannelByRatio = (
   channel1: number,
   channel2: number,
   ratio: number
-): number => channel1 * ratio + channel2 * (1 - ratio);
+): number =>  (channel2 * (1 - ratio)) + (channel1 * ratio);
 
 /**
  * It takes an object with three properties, r, g, and b, and returns an object with two methods,
