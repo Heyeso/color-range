@@ -9,7 +9,8 @@
   "scripts": {
     "start:dev": "npx nodemon",
     "test": "jest --watchAll",
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -45,8 +46,5 @@
     "nodemon": "^2.0.20",
     "ts-jest": "^29.0.5",
     "tslib": "^2.5.0"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/Heyeso"
   }
 }
