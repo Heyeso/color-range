@@ -23,12 +23,14 @@
   },
   "homepage": "https://github.com/Heyeso/color-map#readme",
   "keywords": [
-    "temperature",
+    "range",
     "color",
     "library",
     "javascript",
+    "typescript",
     "function",
-    "converter"
+    "converter",
+    "blend"
   ],
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",
@@ -38,10 +40,7 @@
     "rollup": "^3.10.1",
     "rollup-plugin-dts": "^5.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "styled-components": "^5.3.6",
-    "typescript": "^4.9.4"
-  },
-  "dependencies": {
+    "typescript": "^4.9.4",
     "@types/jest": "^29.4.0",
     "nodemon": "^2.0.20",
     "ts-jest": "^29.0.5",
