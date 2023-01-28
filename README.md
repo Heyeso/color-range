@@ -1,6 +1,6 @@
 # Color Range  
 
-![version](https://img.shields.io/npm/v/@heyeso/color-range) ![size](https://img.shields.io/bundlephobia/minzip/@heyeso/color-range) ![downloads](https://img.shields.io/npm/dw/@heyeso/color-range) ![license](https://img.shields.io/npm/l/@heyeso/color-range)
+![version](https://img.shields.io/npm/v/@heyeso/color-range) ![size](https://img.shields.io/bundlephobia/minzip/@heyeso/color-range) ![downloads](https://img.shields.io/npm/dw/@heyeso/color-range) ![license](https://img.shields.io/badge/license-MIT-green)
 
 ## Description
 
