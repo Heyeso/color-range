@@ -1,7 +1,7 @@
 {
   "name": "@heyeso/color-range",
   "version": "1.0.0",
-  "description": "A library of functions for generating colors within a specified range that has been mapped to colors.",
+  "description": "Color Range is a TypeScript library allows you to generate a percentage of mix between two colors within given a range.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
