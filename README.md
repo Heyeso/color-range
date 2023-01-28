@@ -1,10 +1,11 @@
-# Color Map  
+# Color Range  
 
-![version](https://img.shields.io/npm/v/@heyeso/color-map) ![size](https://img.shields.io/bundlephobia/minzip/@heyeso/color-map) ![downloads](https://img.shields.io/npm/dw/@heyeso/color-map) ![license](https://img.shields.io/npm/l/@heyeso/color-map)
+![version](https://img.shields.io/npm/v/@heyeso/color-range) ![size](https://img.shields.io/bundlephobia/minzip/@heyeso/color-range) ![downloads](https://img.shields.io/npm/dw/@heyeso/color-range) ![license](https://img.shields.io/npm/l/@heyeso/color-range)
 
 ## Description
 
-color-map is a TypeScript library that allows developers to easily generate a wide range of colors within a specified interval of numbers. The library utilizes a unique mapping system that assigns specific colors to specific values, allowing for precise and consistent color generation. With color-map, developers can easily create color palettes for use in web and mobile applications, as well as in data visualization and graphic design projects. Whether you're a designer looking to create a cohesive color scheme or a developer building an interactive data visualization, color-map is the perfect tool for the job.
+Color Range is a TypeScript library allows you to generate a percentage of mix between two colors within given a range. The provided range will determine the available midpoints, with each midpoint being a percentage of mix. It uses a linear interpolation algorithm to blend the two colors together, resulting in a smooth transition between the two.
+The library provides a simple and easy-to-use API, allowing you to specify the colors and the range for the blend. It can be useful for creating color schemes, gradient backgrounds, and other design elements in web and graphic design projects. It also support different color format like RGB, RGBA, and HEX. With this library, you can easily create dynamic and visually striking designs with minimal code.
 
 ## Getting Started
 
@@ -12,68 +13,44 @@ color-map is a TypeScript library that allows developers to easily generate a wi
 
 ### Installing
 
-* `npm i @heyeso/color-map --save-dev`
-* In your projects's `package.json` file, add
-    ```
-    {
-        ...,
-        "type": "module"
-    }
-    ```
+* `npm i @heyeso/color-range --save-dev`
 
 ### Usage  
 
-#### `colorMap()`
+#### `colorRange()`
 
 ```js
-import colorMap from "@heyeso/color-map";
+import { colorRange } from "@heyeso/color-range";
 
 /**
  * Default colors for mapping.
  */
 export const test_colors = [
-    [255, 0, 255],
-    [217, 130, 181],
-    [128, 0, 128],
-    [0, 0, 255],
-    [135, 206, 235],
-    [0, 255, 0],
-    [27, 142, 45],
-    [255, 255, 0],
-    [255, 215, 0],
     [255, 36, 0],
     [255, 0, 0],
-    [139, 0, 0],
   ];
 /**
  * Default ranges for mapping.
  */
-export const test_ranges = [-1, 4, 10, 16, 21, 27, 32, 38, -23, -18, -12, -7];
+export const test_ranges = [0, 100];
 
-const temperatureMap = colorMap(test_colors, test_ranges);
-const temp1 = temperatureMap.getColor(30);
+const temperatureMap = colorRange(test_colors, test_ranges);
+const temp1 = temperatureMap.getColor(50);
 
-temp1?.rgb; // { r: 255, g: 22, b: 0 }
-temp1?.toString(); // "rgb(255, 22, 0)"
-temp1?.toHex(); // "#ff1600"
+temp1?.rgb; // { r: 255, g: 18, b: 0 }
+temp1?.toString(); // "rgb(255, 18, 0)"
+temp1?.toHex(); // "#ff1200"
 ```
 
 #### `createColor()`
 
 ```js
-import { createColor } from "@heyeso/color-map";
+import { createColor } from "@heyeso/color-range";
 
 const color = createColor([3, 40, 69]);
 color.toString(); // "rgb(3, 40, 69)"
 color.toHex(); // "#032845"
 ```
-
-## Sample Use
-
-Sample use in projects.
-
-![image](https://user-images.githubusercontent.com/60695851/150843912-84a696a6-a8e0-49db-b563-c71b7a93aadd.png)
-![image](https://user-images.githubusercontent.com/60695851/150844051-da838947-10f7-4d8b-bbd2-f273cfcbd735.png)
 
 ## Contributing
 
@@ -95,7 +72,6 @@ Abdulsalam Odetayo  [@linkedIn](https://www.linkedin.com/in/abdulsalam-odetayo-8
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
 
 ## References
 
