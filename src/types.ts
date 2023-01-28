@@ -15,7 +15,7 @@ export type MapObject = {
   ranges: number[];
 };
 
-export type ColorMap = {
-    map: MapObject,
-    getColor: (value: number) => Color | null
-}
+export type ColorRange = {
+  map: MapObject;
+  getColor: (value: number) => Color | null;
+};

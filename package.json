@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Heyeso/color-map.git"
+    "url": "git+https://github.com/Heyeso/color-range.git"
   },
   "author": "Abdulsalam 0. Odetayo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Heyeso/color-map/issues"
+    "url": "https://github.com/Heyeso/color-range/issues"
   },
-  "homepage": "https://github.com/Heyeso/color-map#readme",
+  "homepage": "https://github.com/Heyeso/color-range#readme",
   "keywords": [
     "range",
     "color",
