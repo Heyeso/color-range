@@ -1,4 +1,4 @@
-import { Color, ColorMap } from "./types";
+import { Color, ColorRange } from "./types";
 import { createMap, blendColorByRatio } from "./utils";
 
 /**
@@ -9,10 +9,10 @@ import { createMap, blendColorByRatio } from "./utils";
  * @param {number[]} ranges - [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
  * @returns An object with two properties: map and getColor.
  */
-export default function colorMap(
+export default function colorRange(
   colors: number[][],
   ranges: number[]
-): ColorMap {
+): ColorRange {
   return {
     map: createMap(colors, ranges),
     getColor(num: number): Color | null {

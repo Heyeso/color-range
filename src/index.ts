@@ -1,2 +1,2 @@
-export { default as colorMap } from "./color-map";
+export { default as colorRange } from "./color-range";
 export * from './utils'

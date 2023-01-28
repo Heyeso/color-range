@@ -1,9 +1,9 @@
 import { createMap, createColor } from "../utils";
-import colorMap from "../color-map";
+import colorRange from "../color-range";
 import { test_colors, test_ranges } from "./data";
 
-describe("colorMap()", () => {
-  const mapping1 = colorMap(test_colors, test_ranges);
+describe("colorRange()", () => {
+  const mapping1 = colorRange(test_colors, test_ranges);
   const colorRangeMap1 = createMap(test_colors, test_ranges);
 
   it("should map colors and range correctly", () => {
