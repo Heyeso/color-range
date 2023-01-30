@@ -13,7 +13,7 @@ The library provides a simple and easy-to-use API, allowing you to specify the c
 
 ### Installing
 
-* `npm i @heyeso/color-range --save-dev`
+* `npm i @heyeso/color-range`
 
 ### Usage  
 
