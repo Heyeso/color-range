@@ -81,3 +81,26 @@ export const createMap = (colors: number[][], ranges: number[]): MapObject => {
     ranges: ranges.sort((a, b) => a - b),
   };
 };
+
+export const isRGB = (value: any): value is RGB => {
+  return (
+    typeof value === "object" &&
+    "r" in value &&
+    typeof value.r === "number" &&
+    "g" in value &&
+    typeof value.g === "number" &&
+    "b" in value &&
+    typeof value.b === "number"
+  );
+};
+
+export const isRGBString = (value: any): boolean => {
+  const valid =
+    /^(rgb)?\(?\W?([01]?\d\d?|2[0-4]\d|25[0-5])(\W+)([01]?\d\d?|2[0-4]\d|25[0-5])\W+(([01]?\d\d?|2[0-4]\d|25[0-5])\W?\)?)$/;
+  return typeof value === "string" && valid.test(value);
+};
+
+export const isHex = (value: any): boolean => {
+  const valid = /^#[0-9a-fA-F]{6}$/;
+  return typeof value === "string" && valid.test(value);
+};

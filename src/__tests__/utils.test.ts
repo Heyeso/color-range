@@ -1,4 +1,12 @@
-import { channelToHex, createMap, blendColorByRatio, createColor } from "./../utils";
+import {
+  channelToHex,
+  createMap,
+  blendColorByRatio,
+  createColor,
+  isRGB,
+  isRGBString,
+  isHex,
+} from "./../utils";
 import { test_colors, test_ranges } from "./data";
 
 describe("percentageColorMixer()", () => {
@@ -74,4 +82,85 @@ describe("createMap()", () => {
   it("should sort the ranges", () => {
     expect(colorRangeMap.ranges[0]).toEqual(-23);
   });
+});
+
+describe("isRGB()", () => {
+  const sampleColor = {
+    r: test_colors[0][0],
+    g: test_colors[0][1],
+    b: test_colors[0][2],
+  };
+
+  const imposter = {
+    r: test_colors[0][0],
+    g: test_colors[0][1],
+    z: test_colors[0][2],
+  };
+
+  const imposter1 = {
+    r: "1",
+    g: "2",
+    b: "3",
+  };
+
+  it("should return true if it is RGB object type", () => {
+    expect(isRGB(sampleColor)).toEqual(true);
+  });
+
+  it("should return false if it is not RGB object type", () => {
+    expect(isRGB(imposter)).toEqual(false);
+    expect(isRGB(imposter1)).toEqual(false);
+    expect(isRGB("rgb(2, 3, 4)")).toEqual(false);
+  });
+});
+
+describe("isRGBString()", () => {
+  const sampleColors = [
+    "rgb(255,255,255)",
+    "rgb(255, 255, 255)",
+    "rgb(0/0/0)",
+    "rgb(50-50-50)",
+    "rgb(0 - 0 - 0)",
+    "rgb(255,0-50)",
+    "rgb(0, 255 255)",
+    "rgb( 0 0 0 )",
+    "255,255,255",
+    "255, 255, 0",
+    "(0, 0, 30)",
+    "(255 - 255 - 255)",
+    "rgb0 0 0",
+    "rgb255 - 0/255",
+  ];
+  it("should return true if it is an RGB string", () => {
+    sampleColors.forEach((sampleColor) =>
+      expect(isRGBString(sampleColor)).toEqual(true)
+    );
+  });
+
+  it("should return false if it is not an RGB string", () => {
+    expect(isRGBString({})).toEqual(false)
+    expect(isRGBString("Hello World")).toEqual(false)
+  })
+});
+
+describe("isHex()", () => {
+  const sampleColors = [
+    "#ffffff",
+    "#012345",
+    "#012abc",
+    "#abc012",
+    "#abcdef",
+    "#000000",
+  ];
+  it("should return true if it is an Hex string", () => {
+    sampleColors.forEach((sampleColor) =>
+      expect(isHex(sampleColor)).toEqual(true)
+    );
+  });
+
+  it("should return false if it is not an Hex string", () => {
+    expect(isHex({})).toEqual(false)
+    expect(isHex("Hello World")).toEqual(false)
+    expect(isHex("#abdxyz")).toEqual(false)
+  })
 });
