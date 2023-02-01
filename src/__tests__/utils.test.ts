@@ -1,3 +1,4 @@
+import { RGB } from "../types";
 import {
   channelToHex,
   createMap,
@@ -6,6 +7,9 @@ import {
   isRGB,
   isRGBString,
   isHex,
+  stringToRGB,
+  hexToRGB,
+  arrayToRGB,
 } from "./../utils";
 import { test_colors, test_ranges } from "./data";
 
@@ -138,9 +142,9 @@ describe("isRGBString()", () => {
   });
 
   it("should return false if it is not an RGB string", () => {
-    expect(isRGBString({})).toEqual(false)
-    expect(isRGBString("Hello World")).toEqual(false)
-  })
+    expect(isRGBString({})).toEqual(false);
+    expect(isRGBString("Hello World")).toEqual(false);
+  });
 });
 
 describe("isHex()", () => {
@@ -159,8 +163,116 @@ describe("isHex()", () => {
   });
 
   it("should return false if it is not an Hex string", () => {
-    expect(isHex({})).toEqual(false)
-    expect(isHex("Hello World")).toEqual(false)
-    expect(isHex("#abdxyz")).toEqual(false)
-  })
+    expect(isHex({})).toEqual(false);
+    expect(isHex("Hello World")).toEqual(false);
+    expect(isHex("#abdxyz")).toEqual(false);
+  });
+});
+
+describe("stringToRGB()", () => {
+  const sampleColorsString = [
+    "rgb(255,255,255)",
+    "rgb(255, 255, 255)",
+    "rgb(255/255/255)",
+    "rgb(255-255-255)",
+    "rgb(255 - 255 - 255)",
+    "rgb(255,255-255)",
+    "rgb(255, 255 255)",
+    "rgb( 255 255 255 )",
+    "255,255,255",
+    "255, 255, 255",
+    "(255, 255, 255)",
+    "(255 - 255 - 255)",
+    "rgb255 255 255",
+    "rgb255 - 255/255",
+  ];
+
+  const sampleColor: RGB = {
+    r: 255,
+    g: 255,
+    b: 255,
+  };
+
+  it("should return RGB object with correct values", () => {
+    sampleColorsString.forEach((sampleColorString) =>
+      expect(stringToRGB(sampleColorString)).toEqual(sampleColor)
+    );
+  });
+
+  it("should throw error if not a valid rgb string value", () => {
+    try {
+      stringToRGB("rgf(255, 255, 255)");
+      stringToRGB("#abdxyz");
+    } catch (e) {
+      expect(e).toEqual(
+        new Error("Input values must be a valid rgb string value.")
+      );
+    }
+  });
+});
+
+describe("hexToRGB()", () => {
+  const sampleColor: RGB = {
+    r: 255,
+    g: 255,
+    b: 255,
+  };
+
+  it("should return RGB object with correct values", () => {
+    expect(hexToRGB("#ffffff")).toEqual(sampleColor);
+  });
+
+  it("should throw error if not a valid hex string value", () => {
+    try {
+      hexToRGB("rgf(255, 255, 255)");
+      hexToRGB("#abdxyz");
+    } catch (e) {
+      expect(e).toEqual(
+        new Error("Input values must be a valid Color Hex value.")
+      );
+    }
+  });
+});
+
+describe("arrayToRGB()", () => {
+  const sampleColor: RGB = {
+    r: 255,
+    g: 255,
+    b: 255,
+  };
+
+  it("should return RGB object with correct values", () => {
+    expect(arrayToRGB([255, 255, 255])).toEqual(sampleColor);
+    expect(arrayToRGB(["255", "255", "255"])).toEqual(sampleColor);
+  });
+
+  describe("should throw error if not a valid array of rgb values", () => {
+    it("should return throw out of range error", () => {
+      try {
+        expect(arrayToRGB([1255, 255, 255])).toEqual(sampleColor);
+      } catch (e) {
+        expect(e).toEqual(
+          new Error("Value out of range for an RGB value: 1255.")
+        );
+      }
+    });
+
+    it("should return throw invalid value error", () => {
+      try {
+        expect(arrayToRGB(["Hello", "255", "255"])).toEqual(sampleColor);
+      } catch (e) {
+        expect(e).toEqual(new Error("Invalid value: Hello."));
+      }
+    });
+
+    it("should return throw array length error", () => {
+      try {
+        expect(arrayToRGB([255, 255, 255, 34])).toEqual(sampleColor);
+      } catch (e) {
+        expect(e).toEqual(
+          new Error("Input values must be an array of length 3.")
+        );
+      }
+    });
+  });
 });
