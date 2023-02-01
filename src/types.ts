@@ -4,6 +4,10 @@ export type RGB = {
   b: number;
 };
 
+export type RGBString = string;
+
+export type Hex = string;
+
 export type Color = {
   rgb: RGB;
   toString: () => string;
