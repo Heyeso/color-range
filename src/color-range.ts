@@ -38,7 +38,7 @@ export const createColor = (value: RGB | number[] | string): Color => {
  * It takes an array of RGB colors and an array of ranges, and returns a ColorRangeMap object.
  * Both arrays must be of same sizes
  *
- * @param {number[][]} colors - An array of RGB color values.
+ * @param {(RGB | number[] | string)[]} colors - An array of RGB color values.
  * @param {number[]} ranges - An array of numbers that represent the ranges of the colors.
  * @returns A color range map.
  */
@@ -77,12 +77,12 @@ export const blendColorByRatio = function (
 /**
  * It takes an array of colors and an array of ranges, and returns an object with the mapping of
  * color to ranges, and a `getColor` method that takes a number and returns a color.
- * @param {number[][]} colors - an array of colors, each color is an array of 3 numbers, each number is
+ * @param {(RGB | number[] | string)[]} colors - an array of colors, each color is an array of 3 numbers, each number is
  * between 0 and 255.
  * @param {number[]} ranges - [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
  * @returns An object with two properties: map and getColor.
  */
-export function colorRange(colors: number[][], ranges: number[]): ColorRange {
+export function colorRange(colors: (RGB | number[] | string)[], ranges: number[]): ColorRange {
   return {
     map: createMap(colors, ranges),
     getColor(num: number, alpha?: number): Color {
