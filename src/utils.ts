@@ -1,4 +1,4 @@
-import { Color, MapObject, RGB } from "./types";
+import { RGB } from "./types";
 
 /**
  * "Given two color channels and a ratio, return a new color channel that is a mix of the two."
@@ -8,35 +8,11 @@ import { Color, MapObject, RGB } from "./types";
  * @param {number} ratio - The amount of the first color to mix with the second color.
  * @returns A new color channel that is a mix of the two.
  */
-const blendChannelByRatio = (
+export const blendChannelByRatio = (
   channel1: number,
   channel2: number,
   ratio: number
 ): number =>  (channel2 * (1 - ratio)) + (channel1 * ratio);
-
-/**
- * It takes in a color value, and returns a color object
- * @param {RGB | number[] | string} value - RGB | number[] | string
- * @returns A function that returns an object with a toString method and a toHex method.
- */
-export const createColor = (value: RGB | number[] | string): Color => {
-  let rgb =  { r: 0, g: 0, b: 0 };
-
-  if (isRGB(value)) rgb = { r: value.r, g: value.g, b: value.b };
-  else if (isRGBString(value)) rgb = stringToRGB(value);
-  else if (isHex(value)) rgb = hexToRGB(value);
-  else if (Array.isArray(value)) rgb = arrayToRGB(value);
-
-  return {
-    rgb,
-    toString() {
-      return rgbToString(this.rgb);
-    },
-    toHex() {
-      return toHex(this.rgb);
-    },
-  };
-};
 
 /**
  * "Given an RGB object, return a string of the form rgb(r, g, b)."
@@ -44,36 +20,7 @@ export const createColor = (value: RGB | number[] | string): Color => {
  * The function takes an RGB object as its argument and returns a string
  * @param {RGB} rgb - The RGB object to convert to a string.
  */
-const rgbToString = (rgb: RGB): string => `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
-
-/**
- * It takes an RGB object and returns an Hex string
- * @param {RGB} rgb - RGB - This is the RGB object that we're converting to a hex string.
- */
-const toHex = (rgb: RGB): string =>
-  `#${channelToHex(rgb.r)}${channelToHex(rgb.g)}${channelToHex(rgb.b)}`;
-
-/**
- * It takes two colors and a percentage, and returns a new color that is a mix of the two colors
- * @param {Color} color1 - The first color to mix.
- * @param {Color} color2 - The color to mix with.
- * @param [ratio=0.5] - The percentage of color1 to use.
- * @returns A color object
- */
-export const blendColorByRatio = function (
-  color1: Color,
-  color2: Color,
-  ratio = 0.5
-): Color {
-  if (ratio > 1) ratio = 1;
-  if (ratio < 0) ratio = 0;
-
-  const r = blendChannelByRatio(color1.rgb.r, color2.rgb.r, ratio);
-  const g = blendChannelByRatio(color1.rgb.g, color2.rgb.g, ratio);
-  const b = blendChannelByRatio(color1.rgb.b, color2.rgb.b, ratio);
-
-  return createColor({ r: Math.round(r), g: Math.round(g), b: Math.round(b) });
-};
+export const rgbToString = (rgb: RGB): string => `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
 
 /**
  * It takes a number between 0 and 255 and returns a string with the hexadecimal representation of that
@@ -87,21 +34,11 @@ export const channelToHex = (channel: number): string => {
 };
 
 /**
- * It takes an array of RGB colors and an array of ranges, and returns a ColorRangeMap object.
- * Both arrays must be of same sizes
- *
- * @param {number[][]} colors - An array of RGB color values.
- * @param {number[]} ranges - An array of numbers that represent the ranges of the colors.
- * @returns A color range map.
+ * It takes an RGB object and returns an Hex string
+ * @param {RGB} rgb - RGB - This is the RGB object that we're converting to a hex string.
  */
-export const createMap = (colors: number[][], ranges: number[]): MapObject => {
-  return {
-    colors: colors.map((colorItem) =>
-      createColor({ r: colorItem[0], g: colorItem[1], b: colorItem[2] })
-    ),
-    ranges: ranges.sort((a, b) => a - b),
-  };
-};
+export const toHex = (rgb: RGB): string =>
+  `#${channelToHex(rgb.r)}${channelToHex(rgb.g)}${channelToHex(rgb.b)}`;
 
 /**
  * "If the value is an object with r, g, and b properties that are numbers, then it's an RGB object."
