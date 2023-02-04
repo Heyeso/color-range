@@ -10,8 +10,8 @@ export type Hex = string;
 
 export type Color = {
   rgb: RGB;
-  toString: () => string;
-  toHex: () => string;
+  toString: string;
+  toHex: string;
 };
 
 export type MapObject = {
