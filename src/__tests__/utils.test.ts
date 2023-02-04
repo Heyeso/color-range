@@ -114,7 +114,7 @@ describe("stringToRGB()", () => {
     "(255, 255, 255)",
     "(255 - 255 - 255)",
     "rgb255 255 255",
-    "rgb255 - 255/255",
+    "rgba255 - 255/255",
   ];
 
   const sampleColor: RGB = {
@@ -127,6 +127,15 @@ describe("stringToRGB()", () => {
     sampleColorsString.forEach((sampleColorString) =>
       expect(stringToRGB(sampleColorString)).toEqual(sampleColor)
     );
+
+    expect(stringToRGB("rgba(255, 255, 255, 0.4)")).toEqual({
+      ...sampleColor,
+      a: 0.4,
+    });
+    expect(stringToRGB("rgba(255, 255, 255, 1)")).toEqual({
+      ...sampleColor,
+      a: 1,
+    });
   });
 
   it("should throw error if not a valid rgb string value", () => {
@@ -150,6 +159,10 @@ describe("hexToRGB()", () => {
 
   it("should return RGB object with correct values", () => {
     expect(hexToRGB("#ffffff")).toEqual(sampleColor);
+    expect(hexToRGB("#ffffff66")).toEqual({
+      ...sampleColor,
+      a: 0.4,
+    });
   });
 
   it("should throw error if not a valid hex string value", () => {
@@ -174,6 +187,14 @@ describe("arrayToRGB()", () => {
   it("should return RGB object with correct values", () => {
     expect(arrayToRGB([255, 255, 255])).toEqual(sampleColor);
     expect(arrayToRGB(["255", "255", "255"])).toEqual(sampleColor);
+    expect(arrayToRGB([255, 255, 255, 0.4])).toEqual({
+      ...sampleColor,
+      a: 0.4,
+    });
+    expect(arrayToRGB(["255", "255", "255", "0.4"])).toEqual({
+      ...sampleColor,
+      a: 0.4,
+    });
   });
 
   describe("should throw error if not a valid array of rgb values", () => {
@@ -197,10 +218,10 @@ describe("arrayToRGB()", () => {
 
     it("should return throw array length error", () => {
       try {
-        expect(arrayToRGB([255, 255, 255, 34])).toEqual(sampleColor);
+        expect(arrayToRGB([255, 255, 255, 1, 23])).toEqual(sampleColor);
       } catch (e) {
         expect(e).toEqual(
-          new Error("Input values must be an array of length 3.")
+          new Error("Input values must be an array of length 3 or 4.")
         );
       }
     });
