@@ -17,17 +17,20 @@ import {
  * @returns A function that returns an object with a toString method and a toHex method.
  */
 export const createColor = (value: RGB | number[] | string): Color => {
-  let rgb = { r: 0, g: 0, b: 0 };
+  let rgb: RGB = { r: 0, g: 0, b: 0 };
 
-  if (isRGB(value)) rgb = { r: value.r, g: value.g, b: value.b };
-  else if (isRGBString(value)) rgb = stringToRGB(value);
+  if (isRGB(value)) {
+    if (value.a && (value.a < 0 || value.a > 1))
+      throw new Error(`Value out of range for an alpha value: ${value}.`);
+    rgb = { r: value.r, g: value.g, b: value.b, a: value.a };
+  } else if (isRGBString(value)) rgb = stringToRGB(value);
   else if (isHex(value)) rgb = hexToRGB(value);
   else if (Array.isArray(value)) rgb = arrayToRGB(value);
 
   return {
     rgb,
     toString: rgbToString(rgb),
-    toHex: toHex(rgb),
+    toHex: toHex(rgb, rgb.a),
   };
 };
 
@@ -39,11 +42,12 @@ export const createColor = (value: RGB | number[] | string): Color => {
  * @param {number[]} ranges - An array of numbers that represent the ranges of the colors.
  * @returns A color range map.
  */
-export const createMap = (colors: number[][], ranges: number[]): MapObject => {
+export const createMap = (
+  colors: (RGB | number[] | string)[],
+  ranges: number[]
+): MapObject => {
   return {
-    colors: colors.map((colorItem) =>
-      createColor({ r: colorItem[0], g: colorItem[1], b: colorItem[2] })
-    ),
+    colors: colors.map((colorItem) => createColor(colorItem)),
     ranges: ranges.sort((a, b) => a - b),
   };
 };
@@ -81,12 +85,12 @@ export const blendColorByRatio = function (
 export function colorRange(colors: number[][], ranges: number[]): ColorRange {
   return {
     map: createMap(colors, ranges),
-    getColor(num: number): Color {
+    getColor(num: number, alpha?: number): Color {
       if (num <= this.map.ranges[0]) return this.map.colors[0];
       if (num >= this.map.ranges[this.map.ranges.length - 1])
         return this.map.colors[this.map.ranges.length - 1];
 
-      let color = this.map.colors[0]; // Null Case
+      let color = createColor({ ...this.map.colors[0].rgb, a: alpha });
       this.map.ranges.forEach((range, index) => {
         if (num > range && num < this.map.ranges[index + 1]) {
           const min = range,
@@ -98,7 +102,12 @@ export function colorRange(colors: number[][], ranges: number[]): ColorRange {
             this.map.colors[index + 1],
             ratio
           );
-        } else if (num === range) color = this.map.colors[index];
+
+          color = alpha ? createColor({ ...color.rgb, a: alpha }) : color;
+        } else if (num === range)
+          color = alpha
+            ? createColor({ ...this.map.colors[index].rgb, a: alpha })
+            : this.map.colors[index];
       });
 
       return color;

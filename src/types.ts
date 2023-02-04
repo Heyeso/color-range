@@ -2,6 +2,7 @@ export type RGB = {
   r: number;
   g: number;
   b: number;
+  a?: number;
 };
 
 export type RGBString = string;
@@ -21,5 +22,5 @@ export type MapObject = {
 
 export type ColorRange = {
   map: MapObject;
-  getColor: (value: number) => Color | null;
+  getColor: (value: number, alpha?: number) => Color;
 };

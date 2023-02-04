@@ -14,6 +14,7 @@ describe("createColor()", () => {
   };
   const color1 = createColor(sampleColor);
   const color2 = createColor(test_colors[0]);
+  const color3 = createColor({ ...sampleColor, a: 0.4 });
 
   it("should match both types of color creation", () => {
     expect(color1.rgb).toEqual(color2.rgb);
@@ -21,15 +22,20 @@ describe("createColor()", () => {
 
   it("should match rgb of input color", () => {
     expect(color1.rgb).toEqual(sampleColor);
+    expect(color3.rgb).toEqual({ ...sampleColor, a: 0.4 });
   });
 
   it("should return the hex of input color", () => {
     expect(color1.toHex).toEqual("#ff00ff");
+    expect(color3.toHex).toEqual("#ff00ff66");
   });
 
   it("should return rgb string of input color", () => {
     expect(color1.toString).toEqual(
       `rgb(${sampleColor.r}, ${sampleColor.g}, ${sampleColor.b})`
+    );
+    expect(color3.toString).toEqual(
+      `rgb(${sampleColor.r}, ${sampleColor.g}, ${sampleColor.b}, 0.4)`
     );
   });
 });
@@ -80,7 +86,23 @@ describe("colorRange()", () => {
   it("should map colors and range correctly", () => {
     expect(mapping1.map.ranges).toEqual(colorRangeMap1.ranges);
   });
+
   describe(".getColor()", () => {
+    it("should get colors", () => {
+      expect(mapping1.getColor(13)?.rgb).toEqual({
+        r: 141,
+        g: 199,
+        b: 23,
+      });
+
+      expect(mapping1.getColor(13, 0.4)?.rgb).toEqual({
+        r: 141,
+        g: 199,
+        b: 23,
+        a: 0.4,
+      });
+    });
+
     it("should pass edge cases", () => {
       expect(mapping1.getColor(-100)?.rgb).toEqual(
         colorRangeMap1.colors[0].rgb
