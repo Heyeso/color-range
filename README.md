@@ -48,9 +48,16 @@ temp1?.toHex(); // "#ff1200"
 import { createColor } from "@heyeso/color-range";
 
 const color = createColor([3, 40, 69]);
-color.toString(); // "rgb(3, 40, 69)"
-color.toHex(); // "#032845"
+color.toString; // "rgb(3, 40, 69)"
+color.toHex; // "#032845"
 ```
+
+* `isRGB()`  
+* `isRGBString()`  
+* `isHex()`  
+* `stringToRGB()`  
+* `hexToRGB()`  
+* `arrayToRGB()`  
 
 ## Contributing
 
