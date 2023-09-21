@@ -176,10 +176,9 @@ export const arrayToRGB = (values: number[] | string[]): RGB => {
     if (typeof newValue === "string") {
       newValue = index === 3 ? parseFloat(newValue) : parseInt(newValue);
       if (isNaN(newValue)) throw new Error(`Invalid value: ${value}.`);
-    }
-    if (index === 3 && (value < 0 || value > 1))
+    } else if (index === 3 && (newValue < 0 || newValue > 1))
       throw new Error(`Value out of range for an alpha value: ${value}.`);
-    else if (value < 0 || value > 255)
+    else if (newValue < 0 || newValue > 255)
       throw new Error(`Value out of range for an RGB value: ${value}.`);
     return newValue;
   });
