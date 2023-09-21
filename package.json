@@ -12,7 +12,7 @@
     "start:dev": "npx nodemon",
     "test": "jest --watchAll",
     "rollup": "rollup -c",
-    "pub": "npm publish --access public"
+    "pub": "npm run rollup && npm publish --access public"
   },
   "repository": {
     "type": "git",
