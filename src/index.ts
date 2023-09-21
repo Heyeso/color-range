@@ -1,4 +1,4 @@
-export { colorRange, createColor } from "./color-range";
+export { colorRange, createColor, blendColorByRatio } from "./color-range";
 export {
   isRGB,
   isRGBString,

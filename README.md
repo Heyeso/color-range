@@ -38,8 +38,8 @@ const temperatureMap = colorRange(test_colors, test_ranges);
 const temp1 = temperatureMap.getColor(50);
 
 temp1?.rgb; // { r: 255, g: 18, b: 0 }
-temp1?.toString(); // "rgb(255, 18, 0)"
-temp1?.toHex(); // "#ff1200"
+temp1?.toString; // "rgb(255, 18, 0)"
+temp1?.toHex; // "#ff1200"
 ```
 
 #### `createColor()`

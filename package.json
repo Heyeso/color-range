@@ -1,11 +1,13 @@
 {
   "name": "@heyeso/color-range",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Color Range is a TypeScript library allows you to generate a percentage of mix between two colors within given a range.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start:dev": "npx nodemon",
     "test": "jest --watchAll",
@@ -37,13 +39,13 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.3.0",
     "@rollup/plugin-typescript": "^11.0.0",
+    "@types/jest": "^29.4.0",
+    "nodemon": "^3.0.1",
     "rollup": "^3.10.1",
     "rollup-plugin-dts": "^5.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "typescript": "^4.9.4",
-    "@types/jest": "^29.4.0",
-    "nodemon": "^2.0.20",
     "ts-jest": "^29.0.5",
-    "tslib": "^2.5.0"
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.4"
   }
 }
