@@ -12,7 +12,7 @@ export const blendChannelByRatio = (
   channel1: number,
   channel2: number,
   ratio: number
-): number =>  (channel2 * (1 - ratio)) + (channel1 * ratio);
+): number =>  (channel1 * (1 - ratio)) + (channel2 * ratio);
 
 /**
  * "Given an RGB object, return a string of the form rgb(r, g, b)."
